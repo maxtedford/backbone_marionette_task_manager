@@ -12,13 +12,12 @@
   </script>
 
   <script type="text/html" id="template-taskListCompositeView">
-    <input id="toggle-all" type="checkbox">
-    <label for="toggle-all">Mark all as complete</label>
     <ul id="task-list"></ul>
   </script>
 </head>
 
 <body>
+<h1>Welcome to Task Manager!</h1>
 <div id="taskapp">
   <section id="main"></section>
 </div>
@@ -32,6 +31,7 @@
 
 <!-- application dependencies -->
 <script src="js/TaskManagerMVC.js"></script>
+<script src="js/TaskManagerMVC.TaskList.js"></script>
 <script>
   $(function(){
     TaskManagerMVC.start();
