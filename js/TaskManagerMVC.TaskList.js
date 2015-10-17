@@ -1,7 +1,15 @@
 TaskManagerMVC.module('TaskList', function(TaskList, App, Backbone, Marionette, $, _) {
 
+  TaskList.Router = Marionette.AppRouter.extend({
+    appRoutes: {
+      '*filter': 'filterItems'
+    }
+  });
+  
   TaskList.Controller = function() {
-    this.taskList = new App.Tasks.TaskList();
+    var startTask = {title: 'first task'};
+    
+    this.taskList = new App.Tasks.TaskList(startTask);
   };
   
   _.extend(TaskList.Controller.prototype, {
@@ -13,6 +21,9 @@ TaskManagerMVC.module('TaskList', function(TaskList, App, Backbone, Marionette, 
       App.main.show(new TaskList.Views.ListView({
         collection: taskList
       }));
+    },
+    filterItems: function(filter) {
+      App.vent.trigger('todoList:filter', filter.trim() || '');
     }
   });
 

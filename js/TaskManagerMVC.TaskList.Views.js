@@ -2,7 +2,7 @@ TaskManagerMVC.module('TaskList.Views', function(Views, App, Backbone, Marionett
   
   Views.ItemView = Marionette.ItemView.extend({
     tagName: 'li',
-    template: 'template-taskItemView',
+    template: '#template-taskItemView',
     initialize: function() {
       this.bindTo(this.model, 'change', this.render, this);
     },
@@ -17,7 +17,7 @@ TaskManagerMVC.module('TaskList.Views', function(Views, App, Backbone, Marionett
   });
   
   Views.ListView = Marionette.CompositeView.extend({
-    template: 'template-taskListCompositeView',
+    template: '#template-taskListCompositeView',
     childView: Views.ItemView,
     childViewContainer: 'task-list',
     initialize: function() {
