@@ -4,6 +4,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Marionette Task Manager</title>
+
+  <script type="text/html" id="template-header">
+    <h1>Welcome to Task Manager!</h1>
+    <h3>Your tasks:</h3>
+    <input id="new-task" placeholder="Enter a new task here" autofocus>
+  </script>
   
   <script type="text/html" id="template-taskItemView">
     <div class="view">
@@ -17,11 +23,10 @@
 </head>
 
 <body>
-<h1>Welcome to Task Manager!</h1>
-<h3>Your tasks:</h3>
-<div id="taskapp">
+<section id="taskapp">
+  <header id="header"></header>
   <section id="main"></section>
-</div>
+</section>
 
 <!-- vendor libraries -->
 <script src="./js/lib/jquery.min.js"></script>
@@ -33,6 +38,7 @@
 <!-- application dependencies -->
 <script src="js/TaskManagerMVC.js"></script>
 <script src="js/TaskManagerMVC.Tasks.js"></script>
+<script src="js/TaskManagerMVC.Layout.js"></script>
 <script src="js/TaskManagerMVC.TaskList.Views.js"></script>
 <script src="js/TaskManagerMVC.TaskList.js"></script>
 <script>

@@ -1,8 +1,8 @@
 TaskManagerMVC.module('TaskList.Views', function(Views, App, Backbone, Marionette, $, _) {
   
-  Views.ItemView = Marionette.ItemView.extend({
+  Views.TaskView = Marionette.ItemView.extend({
     tagName: 'li',
-    template: '#template-taskItemView',
+    template: '#template-taskTaskView',
     initialize: function() {
       this.bindTo(this.model, 'change', this.render, this);
     },
@@ -18,13 +18,10 @@ TaskManagerMVC.module('TaskList.Views', function(Views, App, Backbone, Marionett
   
   Views.ListView = Marionette.CompositeView.extend({
     template: '#template-taskListCompositeView',
-    childView: Views.ItemView,
+    childView: Views.TaskView,
     childViewContainer: 'task-list',
     initialize: function() {
       this.bindTo(this.collection, 'all', this.update, this);
-    },
-    onRender: function() {
-      this.update();
     }
   });
 });

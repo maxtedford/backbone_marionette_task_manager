@@ -1,6 +1,7 @@
 var TaskManagerMVC = new Backbone.Marionette.Application();
 
 TaskManagerMVC.addRegions({
+  header: '#header',
   main: '#main'
 });
 

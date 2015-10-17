@@ -7,13 +7,12 @@ TaskManagerMVC.module('TaskList', function(TaskList, App, Backbone, Marionette, 
   });
   
   TaskList.Controller = function() {
-    var startTask = {title: 'first task'};
-    
-    this.taskList = new App.Tasks.TaskList(startTask);
+    this.taskList = new App.Tasks.TaskList();
   };
   
   _.extend(TaskList.Controller.prototype, {
     start: function() {
+      this.showHeader(this.taskList);
       this.showTaskList(this.taskList);
       this.taskList.fetch();
     },
@@ -21,6 +20,12 @@ TaskManagerMVC.module('TaskList', function(TaskList, App, Backbone, Marionette, 
       App.main.show(new TaskList.Views.ListView({
         collection: taskList
       }));
+    },
+    showHeader: function(taskList) {
+      var header = new App.Layout.Header({
+        collection: taskList
+      });
+      App.header.show(header);
     },
     filterItems: function(filter) {
       App.vent.trigger('todoList:filter', filter.trim() || '');
