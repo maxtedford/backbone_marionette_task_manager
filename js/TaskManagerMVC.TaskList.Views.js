@@ -6,13 +6,18 @@ TaskManagerMVC.module('TaskList.Views', function(Views, App, Backbone, Marionett
     initialize: function() {
       this.bindTo(this.model, 'change', this.render, this);
     },
+    events: {
+      'click .toggle' : 'toggle'
+    },
     onRender: function() {
-      this.$el.removeClass('active completed');
       if (this.model.get('completed')) {
-        this.$el.addClass('completed');
+        this.$el.hide();
       } else {
-        this.$el.addClass('active');
+        this.$el.show();;
       }
+    },
+    toggle: function() {
+      this.model.toggle().save();
     }
   });
   
@@ -22,6 +27,28 @@ TaskManagerMVC.module('TaskList.Views', function(Views, App, Backbone, Marionett
     childViewContainer: 'task-list',
     initialize: function() {
       this.bindTo(this.collection, 'all', this.update, this);
+    },
+    events: {
+      'click .toggle': 'onToggle'
+    },
+    onRender: function() {
+      this.update();
+    },
+    update: function() {
+      this.collection.each(function(task) {
+        if (task.get('completed') === false) {
+          task.hide();
+        } else {
+          task.show();
+        }
+      });
+    },
+    onToggle: function(event) {
+      var task = event.currentTarget;
+      if (task.get('completed') === true) {
+        task.hide();
+        task.save({'completed': false});
+      }
     }
   });
 });

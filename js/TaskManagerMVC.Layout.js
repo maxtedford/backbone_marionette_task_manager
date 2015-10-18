@@ -18,6 +18,7 @@ TaskManagerMVC.module('Layout', function(Layout, App, Backbone, Marionette, $, _
       }
     },
     onTaskBlur: function(){
+      debugger;
       var taskText = this.ui.input.val().trim();
       this.createTask(taskText);
     },
