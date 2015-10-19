@@ -13,7 +13,7 @@ TaskManagerMVC.module('TaskList.Views', function(Views, App, Backbone, Marionett
       if (this.model.get('completed')) {
         this.$el.hide();
       } else {
-        this.$el.show();;
+        this.$el.show();
       }
     },
     toggle: function() {

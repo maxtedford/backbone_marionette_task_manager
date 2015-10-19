@@ -9,22 +9,23 @@ TaskManagerMVC.module('Layout', function(Layout, App, Backbone, Marionette, $, _
       'keypress #new-task': 'onInputKeypress',
       'blur #new-task': 'onTaskBlur'
     },
-    onInputKeypress: function(e) {
+    onInputKeypress: function(event) {
       var ENTER_KEY = 13;
       var taskText = this.ui.input.val().trim();
 
-      if ( e.which === ENTER_KEY && taskText ) {
+      if (event.which === ENTER_KEY && taskText) {
         this.createTask(taskText);
       }
     },
     onTaskBlur: function(){
-      debugger;
       var taskText = this.ui.input.val().trim();
       this.createTask(taskText);
     },
     createTask: function(taskText) {
       if (taskText.trim() === ""){ return; }
-      this.collection.create({
+      var task = new Task();
+      debugger;
+      this.create(task, {
         title: taskText
       });
       this.completeAdd();
