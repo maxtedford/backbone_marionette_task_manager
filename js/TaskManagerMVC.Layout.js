@@ -24,7 +24,6 @@ TaskManagerMVC.module('Layout', function(Layout, App, Backbone, Marionette, $, _
     createTask: function(taskText) {
       if (taskText.trim() === ""){ return; }
       var task = new Task();
-      debugger;
       this.create(task, {
         title: taskText
       });
